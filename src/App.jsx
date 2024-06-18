@@ -37,6 +37,7 @@ function App() {
       .finally(() => setIsLoading(false));
 
     return () => {
+      console.log("abort");
       controller.abort();
     };
   }, [categoryId, page]);
