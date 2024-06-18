@@ -37,7 +37,6 @@ function App() {
       .finally(() => setIsLoading(false));
 
     return () => {
-      console.log("abort");
       controller.abort();
     };
   }, [categoryId, page]);
@@ -49,7 +48,10 @@ function App() {
         <ul className="tags">
           {categories.map((category, index) => (
             <li
-              onClick={() => setCategoryId(index)}
+              onClick={() => {
+                setCategoryId(index)
+                setPage(1);
+              }}
               className={categoryId === index ? "active" : ""}
               key={index}
             >
